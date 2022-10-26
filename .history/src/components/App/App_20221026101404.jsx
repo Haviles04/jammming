@@ -4,27 +4,23 @@ import SearchBar from "../SearchBar/SearchBar";
 import SearchResult from "../SearchResults/SearchResults";
 import Playlist from "../Playlist/Playlist";
 
-function App() {
-  const [searchResults, setSearchResults] = useState([
-    { name: "name1", artist: "artist1", album: "album1", id: 1 },
-    { name: "name2", artist: "artist2", album: "album2", id: 2 },
-    { name: "name3", artist: "artist3", album: "album3", id: 3 },]);
-
-
+class App extends React.Component {
+  
+  render(){
   return (
     <div>
       <h1>
         Ja<span className="highlight">mmm</span>ing
       </h1>
       <div className="App">
-        <SearchBar setSearchResults={setSearchResults} />
+        <SearchBar />
         <div className="App-playlist">
-          <SearchResult searchResults={searchResults} />
+          <SearchResult />
           <Playlist />
         </div>
       </div>
     </div>
   );
 }
-
+}
 export default App;

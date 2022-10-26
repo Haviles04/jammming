@@ -1,6 +1,8 @@
 import React from "react";
+import './Playlist.css'
 import TrackList from "../TrackList/TrackList";
-function Playlist() {
+class Playlist extends React.Component {
+  render(){
   return (
     <div className="Playlist">
       <input value="New Playlist" />
@@ -9,5 +11,5 @@ function Playlist() {
     </div>
   );
 }
-
+}
 export default Playlist;

@@ -1,5 +1,6 @@
 import React from "react";
 import Track from "../Track/Track";
+import './TrackList.css'
 function TrackList({ searchResults }) {
   return (
     <div className="TrackList">
