@@ -2,12 +2,12 @@ import React from "react";
 
 function Track({track}) {
   return (
-    <div className="Track">
-      <div className="Track-information">
+    <div class="Track">
+      <div class="Track-information">
         <h3>{track.name}</h3>
         <p>{track.artist} | {track.album}</p>
       </div>
-      <button className="Track-action">!-- + or - will go here --</button>
+      <button class="Track-action">!-- + or - will go here --</button>
     </div>
   );
 }

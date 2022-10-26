@@ -6,7 +6,7 @@ function TrackList({ searchResults }) {
       {() => { if(searchResults){
       
       searchResults.map((track) => {
-        return <Track track={track} key={track.id} />
+        return <Track track={track} key={track.id} />;
       }
       )
       
