@@ -70,7 +70,7 @@ class App extends React.Component {
           Ja<span className="highlight">mmm</span>ing
         </h1>
         <div className="App">
-          <SearchBar onSearch={this.search}/>
+          <SearchBar />
           <div className="App-playlist">
             <SearchResult searchResults={this.state.searchResults} onRemove={this.removeTrack} onAdd={this.addTrack} />
             <Playlist onSave={this.savePlayList} onNameChange={this.updatePlaylistName} onRemove={this.removeTrack} onAdd={this.addTrack} playlistName={this.state.playlistName} playlistTracks={this.state.playlistTracks}/>

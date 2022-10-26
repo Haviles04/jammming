@@ -25,7 +25,6 @@ class App extends React.Component {
     this.removeTrack = this.removeTrack.bind(this);
     this.updatePlaylistName =this.updatePlaylistName.bind(this);
     this.savePlayList = this.savePlayList.bind(this);
-    this.search = this.search.bind(this);
   }
 
     //add track from search results to playlist based on user input
@@ -51,15 +50,9 @@ class App extends React.Component {
     }
 
     //Generates an array of Uri values and pushes them to an array
-    savePlayList(){
-      let trackUris = [];
+    savePlayList(track){
+      let trackUris;
       this.state.playlistTracks.forEach( track => {trackUris.push(track.uri)})
-    }
-
-    //sets the search term
-    search(search){
-      let searchTerm = search;
-      console.log(searchTerm);
     }
 
 
@@ -70,7 +63,7 @@ class App extends React.Component {
           Ja<span className="highlight">mmm</span>ing
         </h1>
         <div className="App">
-          <SearchBar onSearch={this.search}/>
+          <SearchBar />
           <div className="App-playlist">
             <SearchResult searchResults={this.state.searchResults} onRemove={this.removeTrack} onAdd={this.addTrack} />
             <Playlist onSave={this.savePlayList} onNameChange={this.updatePlaylistName} onRemove={this.removeTrack} onAdd={this.addTrack} playlistName={this.state.playlistName} playlistTracks={this.state.playlistTracks}/>
