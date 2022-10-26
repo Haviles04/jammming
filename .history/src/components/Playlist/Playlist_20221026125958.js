@@ -10,7 +10,7 @@ class Playlist extends React.Component {
 
   getPlayListName(e) {
     e.preventDefault();
-    this.props.onNameChange(e.target.value);
+    this.props.onNameChange(e.value);
   }
 
 

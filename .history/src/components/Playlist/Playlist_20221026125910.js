@@ -6,18 +6,23 @@ class Playlist extends React.Component {
     super(props);
 
     this.getPlayListName = this.getPlayListName.bind(this);
+    this.updatePlaylistName = this.updatePlaylistName.bind(this);
   }
 
   getPlayListName(e) {
     e.preventDefault();
-    this.props.onNameChange(e.target.value);
+    return e.value;
+  }
+
+  updatePlaylistName(){
+    this.props.onNameChange(this.getPlayListName);
   }
 
 
   render() {
     return (
       <div className="Playlist">
-        <input type="text" defaultValue="New Playlist" onChange={this.getPlayListName} />
+        <input defaultValue="New Playlist" onChange={this.getPlayListName} />
         <TrackList
           onRemove={this.props.onRemove}
           isRemoval={false}
