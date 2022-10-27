@@ -1,10 +1,8 @@
 let userAccessToken;
 let expiresIn;
 const clientId = "ce5ea111bbfd4006826713778f05f619";
-const redirectUri = "http://localhost:3000/jammming";
+const redirectUri = "http://localhost:3000/";
 
-
-//gets access token for the URl
 const Spotify = {
   getAccessToken() {
     if (userAccessToken) {
@@ -14,9 +12,9 @@ const Spotify = {
     const expiresInMatch = window.location.href.match(/expires_in=([^&]*)/);
 
     if (accessTokenMatch && expiresInMatch) {
-      userAccessToken = accessTokenMatch[1];
-      expiresIn = expiresInMatch[1];
-      //clears userAcessToken when expires
+      userAccessToken = accessTokenMatch;
+      expiresIn = expiresInMatch;
+      //clears userAcessToken when
       window.setTimeout(() => (userAccessToken = ""), expiresIn * 1000);
       window.history.pushState("Access Token", null, "/");
     }
@@ -25,11 +23,8 @@ const Spotify = {
       const accessUri = `https://accounts.spotify.com/authorize?client_id=${clientId}&response_type=token&scope=playlist-modify-public&redirect_uri=${redirectUri}`;
       window.location.assign(accessUri);
     }
-    console.log(userAccessToken);
-    console.log(expiresIn);
   },
 
-  //fetchs data from spotify then pushs it to array named jsonResponse
   search(term) {
     const accessToken = Spotify.getAccessToken();
     return fetch(`https://api.spotify.com/v1/search?type=track&q=${term}`, {

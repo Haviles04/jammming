@@ -58,7 +58,6 @@ class App extends React.Component {
       console.log(this.state.searchResults);
     }
     
-    //gets access token right away
     componentDidMount(){
       Spotify.getAccessToken();
     }
