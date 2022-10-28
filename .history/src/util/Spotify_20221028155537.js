@@ -3,6 +3,7 @@ let expiresIn;
 const clientId = "ce5ea111bbfd4006826713778f05f619";
 const redirectUri = "https://haviles04.github.io/jammming/";
 
+
 //gets access token for the URl
 const Spotify = {
   getAccessToken() {
@@ -52,30 +53,17 @@ const Spotify = {
   },
 
   //Checks if playlist list is there, and if so sends playlist info to spotify
-  savePlaylist(playListName, tracklistUris) {
-    if (!playListName && !tracklistUris) {
-      return;
-    }
-
+  savePlaylist(playListName, tracklistUris){
+   if(!playListName && !tracklistUris){
+    return;
+   }
+   
     const accessToken = Spotify.getAccessToken();
-    const header = { Authorization: `Bearer ${accessToken}` };
+    const header = {Authorization: `Bearer ${accessToken}`};
     let userID;
-    return fetch("https://api.spotify.com/v1/me", { headers: header })
-      .then((response) => response.json())
-      .then((jsonResponse) => {
-        userID = jsonResponse.id;
-        return fetch(`https://api.spotify.com/v1/users/${userID}/playlists`, {
-          headers: header,
-          method: "POST",
-          body: JSON.stringify(playListName),
-        })
-          .then((response) => response.json())
-          .then((jsonResponse) => {
-            const playListId = jsonResponse.id;
-            return fetch(`https://api.spotify.com/v1/users/${userID}/playlist/${playListId}/tracks`, {headers: header, method: 'POST', body: JSON.stringify({uris: tracklistUris})})
-          });
-      });
-  },
+
+  return fetch('https://api.spotify.com/v1/me', {headers: header}).then(response => response.json()).then(jsonResponse => { return jsonResponse.id});
+  }
 };
 
 export default Spotify;
